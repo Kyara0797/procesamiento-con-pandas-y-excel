@@ -29,24 +29,24 @@ data_people=pd.read_excel('datos.xlsx')
 # print(data_people.info())
 print(data_people.head())
 #1
-data_people['Id']=data_people['Nombre'].astype(str).str.upper().str[0] +\
-                    data_people['Nombre'].astype(str).str.upper().str[-1] +\
+data_people['Id']=data_people['Name'].astype(str).str.upper().str[0] +\
+                    data_people['Name'].astype(str).str.upper().str[-1] +\
                     data_people['Id'].astype(str)
 
 #2
-data_people['Nombre']= data_people['Nombre'].astype(str).str.title()
+data_people['Name']= data_people['Name'].astype(str).str.title()
 
 #3
-data_people['Profesion']=data_people['Profesion'].astype(str).str.upper()
+data_people['Profession']=data_people['Profession'].astype(str).str.upper()
 
 #4
-data_people['Total']= data_people['Sueldo']-data_people['Sueldo']*0.2
+data_people['Total']= data_people['Salary']-data_people['Salary']*0.2
 
 #5
-data_people['Indice']=range(1,len(data_people)+1)
+data_people['Index']=range(1,len(data_people)+1)
 
 #5.1
-data_people= data_people[['Indice','Id','Nombre','Profesion', 'Sueldo', 'Total']]
+data_people= data_people[['Index', 'Id', 'Name', 'Profession', 'Salary', 'Total']]
 
 #Center
 # data_people['Indice']=data_people['Indice'].astype(str).str.center(20)
@@ -56,10 +56,10 @@ data_people= data_people[['Indice','Id','Nombre','Profesion', 'Sueldo', 'Total']
 # data_people['Sueldo']=data_people['Sueldo'].astype(str).str.center(20)
 # data_people['Total']=data_people['Total'].astype(str).str.center(20)
 
-columns_to_format = ['Indice', 'Id', 'Nombre', 'Profesion', 'Sueldo', 'Total']
+columns_to_format = ['Index', 'Id', 'Name', 'Profession', 'Salary', 'Total']
 
 for col in columns_to_format:
     data_people[col] = data_people[col].astype(str).str.center(20)
-    
+
 ##Create Excel
 data_people.to_excel('processed_excel.xlsx', index= False)
